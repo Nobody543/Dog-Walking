@@ -203,6 +203,9 @@
     max-width: 640px;
     margin: 0 auto;
   }
+  .price-grid-single {
+    max-width: 300px;
+  }
   .price-card {
     background: var(--surface);
     border: 1px solid var(--line);
@@ -273,14 +276,6 @@
     border-top: 1px solid var(--line);
   }
 
-  /* area */
-  .area-card {
-    max-width: 56ch;
-    margin: 0 auto;
-    text-align: center;
-  }
-  .area-card p { color: var(--muted); margin-top: 12px; }
-
   /* contact */
   .contact-grid {
     display: grid;
@@ -328,7 +323,7 @@
 <header class="hero">
   <span class="eyebrow">Ingatestone · Essex</span>
   <h1 class="title">Ned&rsquo;s Wag&nbsp;and&nbsp;Wander</h1>
-  <p class="tagline">Friendly, reliable dog walking and sitting from Ned Broderick &mdash; on regular or ad&nbsp;hoc terms, whenever the holidays roll round.</p>
+  <p class="tagline">Friendly, reliable dog walking in and around Ingatestone from Ned Broderick &mdash; on regular or ad&nbsp;hoc terms, whenever the holidays roll round.</p>
   <div class="hero-cta">
     <a class="btn btn-solid" href="#contact">Book a walk</a>
     <a class="btn btn-line" href="#availability">Check availability</a>
@@ -352,8 +347,8 @@
       <h2>About me</h2>
     </div>
     <div class="about-card">
-      <p>Hello! I&rsquo;m <strong>Ned Broderick</strong>, 18, and heading off to university next year. In the meantime, I&rsquo;m offering dog walking and dog sitting around Ingatestone.</p>
-      <p>I take on both <strong>regular</strong> bookings and <strong>one-off, ad hoc</strong> walks &mdash; my availability runs during the holiday windows below, outside of full term.</p>
+      <p>Hello! I&rsquo;m <strong>Ned Broderick</strong>, 18, and heading off to university next year. In the meantime, I&rsquo;m offering dog walking in and around Ingatestone.</p>
+      <p>I take on both <strong>regular</strong> bookings and <strong>one-off, ad hoc</strong> walks &mdash; my availability runs during the holiday windows below.</p>
     </div>
   </div>
 </section>
@@ -364,31 +359,21 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10 l8-6 8 6"/><path d="M6 9v10h12V9"/></svg>
     </div>
     <div class="section-head">
-      <h2>Services &amp; rates</h2>
-      <p>Straightforward pricing, paid per walk or per sit.</p>
+      <h2>Rates</h2>
+      <p>Straightforward pricing, paid per walk.</p>
     </div>
-    <div class="price-grid">
+    <div class="price-grid price-grid-single">
       <div class="price-card">
         <h3>Dog walking</h3>
         <div class="sub">One hour, out and about</div>
         <div class="price-list">
           <div class="price-row">
-            <span class="label">1 dog</span>
-            <span class="amount num">&pound;20</span>
+            <span class="label">1st dog</span>
+            <span class="amount num">&pound;18</span>
           </div>
           <div class="price-row">
             <span class="label">2 dogs</span>
             <span class="amount num">&pound;30</span>
-          </div>
-        </div>
-      </div>
-      <div class="price-card">
-        <h3>Dog sitting</h3>
-        <div class="sub">In your home or mine, by arrangement</div>
-        <div class="price-list">
-          <div class="price-row">
-            <span class="label">Per hour</span>
-            <span class="amount num">&pound;20</span>
           </div>
         </div>
       </div>
@@ -423,20 +408,6 @@
         <div class="dates num">From 20 Jun 2027</div>
       </div>
       <div class="ledger-note">Regular weekly bookings are welcome year-round by arrangement &mdash; just ask. Ad hoc, one-off walks are easiest to fit in during the windows above.</div>
-    </div>
-  </div>
-</section>
-
-<section id="area" class="stop">
-  <div class="wrap">
-    <div class="stop-mark">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
-    </div>
-    <div class="section-head">
-      <h2>Where I cover</h2>
-    </div>
-    <div class="area-card">
-      <p>Based in <strong>Ingatestone, Essex</strong>, and happy to walk dogs in the village and nearby. Get in touch to check your address is within range.</p>
     </div>
   </div>
 </section>
