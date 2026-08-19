@@ -278,10 +278,10 @@
 
   /* contact */
   .contact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 16px;
-    max-width: 460px;
+    max-width: 380px;
     margin: 0 auto;
   }
   .contact-card {
@@ -301,6 +301,7 @@
   .contact-card .v {
     margin-top: 8px;
     font-size: 1.02rem;
+    overflow-wrap: break-word;
   }
   .placeholder { color: var(--muted); font-style: italic; }
 
@@ -348,7 +349,7 @@
     </div>
     <div class="about-card">
       <p>Hello! I&rsquo;m <strong>Ned Broderick</strong>, 18, and heading off to university next year. In the meantime, I&rsquo;m offering dog walking in and around Ingatestone.</p>
-      <p>I take on both <strong>regular</strong> bookings and <strong>one-off, ad hoc</strong> walks &mdash; my availability runs on weekends and during the holiday windows below.</p>
+      <p>I take on both <strong>regular</strong> bookings and <strong>one-off, ad hoc</strong> walks &mdash; my availability runs during the holiday windows below.</p>
     </div>
   </div>
 </section>
@@ -359,8 +360,8 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="9" r="2.4"/></svg>
     </div>
     <div class="about-card">
-      <p>Hello! I&rsquo;m <strong>Orla Broderick</strong>, Ned&rsquo;s sister, and heading into Year 13. I&rsquo;m offering dog walks in and around Ingatestone too.</p>
-      <p>Like Ned, my availability runs on weekends and during the holiday windows below.</p>
+      <p>Hello! I&rsquo;m <strong>Orla Broderick</strong>, 17, and heading into Year 13. I&rsquo;m offering dog walks in and around Ingatestone too.</p>
+      <p>I also take on both <strong>regular</strong> bookings and <strong>one-off, ad hoc</strong> walks &mdash; my availability runs on weekends and during the holiday windows below.</p>
     </div>
   </div>
 </section>
