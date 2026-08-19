@@ -1,0 +1,477 @@
+<title>Ned's Dog Walking</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #efe8d8;
+    --surface: #e4dcc3;
+    --surface-2: #f7f2e5;
+    --text: #2b2417;
+    --muted: #6b5f47;
+    --accent: #b6552c;
+    --accent-ink: #ffffff;
+    --accent2: #4f6b3a;
+    --line: #c2b592;
+    --shadow: rgba(43, 36, 23, 0.14);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1b2116;
+      --surface: #232a1c;
+      --surface-2: #262e1e;
+      --text: #ece4d0;
+      --muted: #a89d80;
+      --accent: #dd8352;
+      --accent-ink: #241304;
+      --accent2: #8bab68;
+      --line: #3a4230;
+      --shadow: rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #1b2116;
+    --surface: #232a1c;
+    --surface-2: #262e1e;
+    --text: #ece4d0;
+    --muted: #a89d80;
+    --accent: #dd8352;
+    --accent-ink: #241304;
+    --accent2: #8bab68;
+    --line: #3a4230;
+    --shadow: rgba(0, 0, 0, 0.4);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: "Fraunces", ui-serif, Georgia, serif;
+    font-weight: 600;
+    text-wrap: balance;
+    margin: 0;
+    color: var(--text);
+  }
+
+  .num {
+    font-family: "Space Mono", ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- trail motif ---------- */
+  .trail {
+    position: relative;
+  }
+  .trail::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-image: linear-gradient(var(--line) 60%, transparent 0%);
+    background-size: 2px 14px;
+    background-repeat: repeat-y;
+    transform: translateX(-50%);
+    opacity: 0.8;
+  }
+  .stop {
+    position: relative;
+    z-index: 1;
+  }
+  .stop-mark {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 18px;
+  }
+  .stop-mark svg { width: 22px; height: 22px; }
+
+  /* ---------- hero ---------- */
+  header.hero {
+    padding: 88px 24px 64px;
+    text-align: center;
+  }
+  .eyebrow {
+    font-family: "Space Mono", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 18px;
+    display: inline-block;
+  }
+  h1.title {
+    font-size: clamp(2.6rem, 6vw, 4.4rem);
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+  }
+  .tagline {
+    max-width: 46ch;
+    margin: 22px auto 0;
+    font-size: 1.15rem;
+    color: var(--muted);
+  }
+  .hero-cta {
+    margin-top: 34px;
+    display: inline-flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .btn {
+    display: inline-block;
+    padding: 13px 26px;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border: 2px solid var(--accent);
+  }
+  .btn-solid {
+    background: var(--accent);
+    color: var(--accent-ink);
+  }
+  .btn-line {
+    background: transparent;
+    color: var(--text);
+    border-color: var(--line);
+  }
+
+  .path-divider {
+    display: flex;
+    justify-content: center;
+    padding: 0 0 8px;
+  }
+  .path-divider svg { width: 120px; height: 20px; color: var(--accent2); opacity: 0.7; }
+
+  section { padding: 20px 24px 80px; }
+
+  .section-head {
+    text-align: center;
+    margin-bottom: 44px;
+  }
+  .section-head h2 { font-size: clamp(1.7rem, 3.4vw, 2.2rem); }
+  .section-head p {
+    color: var(--muted);
+    margin-top: 10px;
+    font-size: 1rem;
+  }
+
+  /* about */
+  .about-card {
+    max-width: 62ch;
+    margin: 0 auto;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 34px 38px;
+    font-size: 1.04rem;
+  }
+  .about-card p + p { margin-top: 14px; }
+  .about-card strong { color: var(--accent); }
+
+  /* pricing */
+  .price-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .price-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 28px 26px;
+  }
+  .price-card h3 {
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+  .price-card .sub {
+    color: var(--muted);
+    font-size: 0.86rem;
+    margin-top: 4px;
+  }
+  .price-list { margin-top: 20px; display: flex; flex-direction: column; gap: 12px; }
+  .price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-top: 1px dashed var(--line);
+    padding-top: 12px;
+  }
+  .price-row:first-child { border-top: none; padding-top: 0; }
+  .price-row .label { font-size: 0.94rem; }
+  .price-row .amount {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  /* availability */
+  .ledger {
+    max-width: 640px;
+    margin: 0 auto;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--surface-2);
+  }
+  .ledger-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: center;
+    padding: 16px 22px;
+    border-bottom: 1px solid var(--line);
+  }
+  .ledger-row:last-child { border-bottom: none; }
+  .ledger-row .name { font-weight: 600; }
+  .ledger-row .name small {
+    display: block;
+    font-weight: 400;
+    color: var(--muted);
+    font-size: 0.82rem;
+    margin-top: 2px;
+  }
+  .ledger-row .dates {
+    font-size: 0.92rem;
+    text-align: right;
+    white-space: nowrap;
+  }
+  .ledger-note {
+    padding: 14px 22px;
+    font-size: 0.82rem;
+    color: var(--muted);
+    background: var(--surface);
+    border-top: 1px solid var(--line);
+  }
+
+  /* area */
+  .area-card {
+    max-width: 56ch;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .area-card p { color: var(--muted); margin-top: 12px; }
+
+  /* contact */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    max-width: 620px;
+    margin: 0 auto;
+  }
+  .contact-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 22px;
+    text-align: center;
+  }
+  .contact-card .k {
+    font-family: "Space Mono", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent2);
+  }
+  .contact-card .v {
+    margin-top: 8px;
+    font-size: 1.02rem;
+  }
+  .placeholder { color: var(--muted); font-style: italic; }
+
+  footer {
+    text-align: center;
+    padding: 40px 24px 60px;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  footer .name { font-family: "Fraunces", serif; font-size: 1.05rem; color: var(--text); }
+
+  @media (max-width: 560px) {
+    .trail::before { left: 24px; }
+    .stop-mark { margin: 0 0 14px; }
+  }
+</style>
+
+<body>
+
+<header class="hero">
+  <span class="eyebrow">Ingatestone · Essex</span>
+  <h1 class="title">Ned&rsquo;s Dog&nbsp;Walking</h1>
+  <p class="tagline">Friendly, reliable dog walking and sitting from Ned Broderick &mdash; on regular or ad&nbsp;hoc terms, whenever the holidays roll round.</p>
+  <div class="hero-cta">
+    <a class="btn btn-solid" href="#contact">Book a walk</a>
+    <a class="btn btn-line" href="#availability">Check availability</a>
+  </div>
+</header>
+
+<div class="path-divider">
+  <svg viewBox="0 0 120 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2 10 C 20 -4, 40 24, 60 10 S 100 -4, 118 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="1 9"/>
+  </svg>
+</div>
+
+<div class="trail">
+
+<section id="about" class="stop">
+  <div class="wrap">
+    <div class="stop-mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="9" r="2.4"/></svg>
+    </div>
+    <div class="section-head">
+      <h2>About Ned</h2>
+    </div>
+    <div class="about-card">
+      <p>Hello! I&rsquo;m <strong>Ned Broderick</strong>, 18, and heading off to university next year. In the meantime, I&rsquo;m offering dog walking and dog sitting around Ingatestone.</p>
+      <p>I take on both <strong>regular</strong> bookings and <strong>one-off, ad hoc</strong> walks &mdash; my availability runs during the holiday windows below, outside of full term.</p>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="stop">
+  <div class="wrap">
+    <div class="stop-mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10 l8-6 8 6"/><path d="M6 9v10h12V9"/></svg>
+    </div>
+    <div class="section-head">
+      <h2>Services &amp; rates</h2>
+      <p>Straightforward pricing, paid per walk or per sit.</p>
+    </div>
+    <div class="price-grid">
+      <div class="price-card">
+        <h3>Dog walking</h3>
+        <div class="sub">One hour, out and about</div>
+        <div class="price-list">
+          <div class="price-row">
+            <span class="label">1 dog</span>
+            <span class="amount num">&pound;20</span>
+          </div>
+          <div class="price-row">
+            <span class="label">2 dogs</span>
+            <span class="amount num">&pound;30</span>
+          </div>
+        </div>
+      </div>
+      <div class="price-card">
+        <h3>Dog sitting</h3>
+        <div class="sub">In your home or mine, by arrangement</div>
+        <div class="price-list">
+          <div class="price-row">
+            <span class="label">Per hour</span>
+            <span class="amount num">&pound;20</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="availability" class="stop">
+  <div class="wrap">
+    <div class="stop-mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="5" width="16" height="15" rx="1.5"/><path d="M4 9h16M8 3v4M16 3v4"/></svg>
+    </div>
+    <div class="section-head">
+      <h2>When I&rsquo;m free</h2>
+      <p>My availability follows the University of Oxford&rsquo;s holiday periods &mdash; the gaps between full terms, not counting 0th week.</p>
+    </div>
+    <div class="ledger">
+      <div class="ledger-row">
+        <div class="name">Now<small>Until Michaelmas 0th week begins</small></div>
+        <div class="dates num">Now &ndash; 3 Oct 2026</div>
+      </div>
+      <div class="ledger-row">
+        <div class="name">Christmas holiday<small>Between Michaelmas &amp; Hilary terms</small></div>
+        <div class="dates num">6 Dec 2026 &ndash; 9 Jan 2027</div>
+      </div>
+      <div class="ledger-row">
+        <div class="name">Easter holiday<small>Between Hilary &amp; Trinity terms</small></div>
+        <div class="dates num">14 Mar &ndash; 17 Apr 2027</div>
+      </div>
+      <div class="ledger-row">
+        <div class="name">Summer holiday<small>After Trinity term ends</small></div>
+        <div class="dates num">From 20 Jun 2027</div>
+      </div>
+      <div class="ledger-note">Regular weekly bookings are welcome year-round by arrangement &mdash; just ask. Ad hoc, one-off walks are easiest to fit in during the windows above.</div>
+    </div>
+  </div>
+</section>
+
+<section id="area" class="stop">
+  <div class="wrap">
+    <div class="stop-mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+    </div>
+    <div class="section-head">
+      <h2>Where I cover</h2>
+    </div>
+    <div class="area-card">
+      <p>Based in <strong>Ingatestone, Essex</strong>, and happy to walk dogs in the village and nearby. Get in touch to check your address is within range.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="stop">
+  <div class="wrap">
+    <div class="stop-mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>
+    </div>
+    <div class="section-head">
+      <h2>Get in touch</h2>
+      <p>Drop me a message to check availability and book a walk.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="k">Phone</div>
+        <div class="v placeholder">[Your phone number]</div>
+      </div>
+      <div class="contact-card">
+        <div class="k">WhatsApp</div>
+        <div class="v placeholder">[Same as mobile]</div>
+      </div>
+      <div class="contact-card">
+        <div class="k">Email</div>
+        <div class="v placeholder">[Your email address]</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="name">Ned&rsquo;s Dog Walking</div>
+  <div style="margin-top:6px;">Ingatestone, Essex</div>
+</footer>
+
+</body>
